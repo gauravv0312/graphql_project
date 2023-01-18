@@ -1,2 +1,1 @@
-"# graphql_project" 
-"# graphql_project" 
+**GraphQL Project**
