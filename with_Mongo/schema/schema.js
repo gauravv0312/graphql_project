@@ -12,17 +12,12 @@ const {
 
 
 
-//Schema defines data on the Graph like object types(book type), relation between
-//these object types and describes how it can reach into the graph to interact with
-//the data to retrieve or mutate the data  
 
 
 
 const BookType = new GraphQLObjectType({
    name: 'Book',
-   //We are wrapping fields in the function as we dont want to execute this ultil
-   //everything is inilized. For example below code will throw an error AuthorType not
-   //found if not wrapped in a function
+   
    fields: () => ({
        id: { type: GraphQLID  },
        name: { type: GraphQLString },
@@ -55,9 +50,6 @@ const AuthorType = new GraphQLObjectType({
 
 
 
-//RootQuery describe how users can use the graph and grab data.
-//E.g Root query to get all authors, get all books, get a particular
-//book or get a particular author.
 const RootQuery = new GraphQLObjectType({
    name: 'RootQueryType',
    fields: {
@@ -97,8 +89,6 @@ const RootQuery = new GraphQLObjectType({
    }
 });
 
-
-//Very similar to RootQuery helps users to add/update to the database.
 const Mutation = new GraphQLObjectType({
    name: 'Mutation',
    fields: {
@@ -136,10 +126,6 @@ const Mutation = new GraphQLObjectType({
    }
 });
 
-
-
-//Creating a new GraphQL Schema, with options query which defines query
-//we will allow users to use when they are making requests.
 module.exports = new GraphQLSchema({
    query: RootQuery,
    mutation: Mutation
